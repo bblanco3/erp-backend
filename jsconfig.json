@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["resources/js/*"],
+            "ziggy-js": ["vendorOld/tightenco/ziggy"]
+        }
+    },
+    "exclude": ["node_modules", "public"]
+}
