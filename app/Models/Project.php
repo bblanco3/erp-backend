@@ -51,6 +51,9 @@ class Project extends Model
     // Define appended attributes
     protected $appends = ['client'];
 
+    // DomainEvents created
+    private array $domain_events = [];
+    
     /**
      * Accessor for client attribute
      */

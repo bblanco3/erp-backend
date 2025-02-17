@@ -6,6 +6,9 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use App\Events\EventBus;
+use App\Events\AsyncEventBus;
+use App\Events\EventDispatcher;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -35,4 +38,14 @@ class EventServiceProvider extends ServiceProvider
     {
         return false;
     }
+
+    /**
+     * Register the event bus 
+     */
+    public function register(): void
+    {
+        $this->app->singleton(EventBus::class, AsyncEventBus::class);
+        $this->app->singleton(EventDispatcher::class);
+    }
+
 }

@@ -1,0 +1,15 @@
+.git
+.gitignore
+.env
+.env.example
+.env.*
+docker-compose.yml
+Dockerfile
+README.md
+storage/framework/cache/**
+storage/framework/sessions/**
+storage/framework/views/**
+storage/logs/*
+bootstrap/cache/*
+node_modules
+vendor

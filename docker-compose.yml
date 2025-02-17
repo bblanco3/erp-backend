@@ -1,0 +1,39 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+      - redis
+    environment:
+      DB_HOST: db
+      DB_DATABASE: synergy
+      DB_USERNAME: synergy
+      DB_PASSWORD: synergy_password
+      REDIS_HOST: redis
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: synergy
+      MYSQL_USER: synergy
+      MYSQL_PASSWORD: synergy_password
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  mysql_data:
